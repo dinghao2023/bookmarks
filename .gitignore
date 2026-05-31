@@ -1,0 +1,6 @@
+node_modules
+dist
+*.local
+
+# 书签备份（可能含个人 URL，勿提交）
+bookmarks-backup-*.json
