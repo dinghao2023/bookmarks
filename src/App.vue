@@ -207,9 +207,9 @@ function onImportFile(e) {
           <button type="button" class="btn btn--primary" @click="openLinkModal()">+ 添加链接</button>
         </div>
       </div>
-      <div class="link-grid">
-        <article v-for="link in filteredLinks" :key="link.id" class="link-card">
-          <h3 class="link-card__title">
+      <div class="link-list">
+        <article v-for="link in filteredLinks" :key="link.id" class="link-row">
+          <h3 class="link-row__title">
             <a
               :href="normalizeUrl(link.url)"
               :target="link.newTab !== false ? '_blank' : undefined"
@@ -217,17 +217,15 @@ function onImportFile(e) {
               >{{ link.title }}</a
             >
           </h3>
-          <p class="link-card__url">{{ link.url }}</p>
-          <div class="link-card__footer">
-            <span class="link-card__cat">{{ categoryById(link.categoryId)?.name || "未分类" }}</span>
-            <div class="link-card__actions">
-              <button type="button" class="icon-btn" title="编辑" @click="openLinkModal(link.id)">
-                ✎
-              </button>
-              <button type="button" class="icon-btn icon-btn--danger" title="删除" @click="deleteLink(link.id)">
-                ×
-              </button>
-            </div>
+          <p class="link-row__url" :title="link.url">{{ link.url }}</p>
+          <span class="link-row__cat">{{ categoryById(link.categoryId)?.name || "未分类" }}</span>
+          <div class="link-row__actions">
+            <button type="button" class="icon-btn" title="编辑" @click="openLinkModal(link.id)">
+              ✎
+            </button>
+            <button type="button" class="icon-btn icon-btn--danger" title="删除" @click="deleteLink(link.id)">
+              ×
+            </button>
           </div>
         </article>
       </div>
